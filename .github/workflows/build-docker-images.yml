@@ -111,13 +111,14 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Docker image
+      - name: Build and push Docker image
+        id: build
         uses: docker/build-push-action@v5
+        continue-on-error: true
         with:
           context: ./apps/${{ matrix.app }}
           file: ./apps/${{ matrix.app }}/Dockerfile
-          push: false
-          load: false
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
@@ -127,16 +128,16 @@ jobs:
             PAPERLESS_VERSION=${{ steps.version.outputs.version }}
           provenance: false
           sbom: false
-          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=Built with retry strategy
 
-      - name: Push Docker image with retry
+      - name: Retry push if failed
+        if: steps.build.outcome == 'failure'
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 5
-          max_attempts: 5
+          max_attempts: 4
           retry_wait_seconds: 30
           command: |
-            # Re-build and push (this will use cache from previous step)
+            # Re-build and push using cache (should be fast)
             docker buildx build \
               --platform linux/amd64,linux/arm64 \
               --build-arg PAPERLESS_VERSION=${{ steps.version.outputs.version }} \
