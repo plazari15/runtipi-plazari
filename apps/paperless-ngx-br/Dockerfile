@@ -1,4 +1,4 @@
-FROM ghcr.io/paperless-ngx/paperless-ngx:latest
+FROM ghcr.io/paperless-ngx/paperless-ngx:2.18.4
 
 USER root
 
