@@ -11,7 +11,7 @@
     "categories": ["utilities"],
     "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",
     "short_desc": "Document Management System (DMS)",
-    "author": "Daniel Quinn, Jonas Winkler, and the Paperless-ngx team",
+    "author": "Daniel Quinn, Jonas Winkler, Pedro Lazari (pt-br OCR) and the Paperless-ngx team",
     "source": "https://github.com/paperless-ngx/paperless-ngx",
     "form_fields": [
       {
