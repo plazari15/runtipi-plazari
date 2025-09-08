@@ -46,7 +46,7 @@ jobs:
             echo "matrix={\"include\":[]}" >> $GITHUB_OUTPUT
             echo "No apps with Dockerfiles found"
           else
-            matrix_json=$(printf '%s\n' "${apps_with_dockerfiles[@]}" | jq -R . | jq -s 'map({app: .})')
+            matrix_json=$(printf '%s\n' "${apps_with_dockerfiles[@]}" | jq -R . | jq -s -c 'map({app: .})')
             echo "matrix={\"include\":$matrix_json}" >> $GITHUB_OUTPUT
             echo "Found apps with Dockerfiles: ${apps_with_dockerfiles[*]}"
           fi
