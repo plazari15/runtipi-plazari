@@ -67,6 +67,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Extract version from Dockerfile
+        id: version
+        run: |
+          if [ -f "./apps/${{ matrix.app }}/Dockerfile" ]; then
+            # Extract version from ARG PAPERLESS_VERSION or similar patterns
+            version=$(grep -E '^ARG.*VERSION=' "./apps/${{ matrix.app }}/Dockerfile" | head -1 | sed -E 's/^ARG.*VERSION=([^[:space:]]+).*/\1/')
+            if [ -z "$version" ]; then
+              # Fallback: try to extract version from FROM line
+              version=$(grep -E '^FROM.*:' "./apps/${{ matrix.app }}/Dockerfile" | head -1 | sed -E 's/.*:([^[:space:]]+).*/\1/')
+            fi
+            if [ -n "$version" ] && [ "$version" != "latest" ]; then
+              echo "version=$version" >> $GITHUB_OUTPUT
+              echo "Found version: $version"
+            else
+              echo "version=" >> $GITHUB_OUTPUT
+              echo "No specific version found, using default tags"
+            fi
+          else
+            echo "version=" >> $GITHUB_OUTPUT
+            echo "No Dockerfile found"
+          fi
+
       - name: Log in to Container Registry
         uses: docker/login-action@v3
         with:
@@ -84,21 +106,47 @@ jobs:
             type=ref,event=pr
             type=sha,prefix={{branch}}-
             type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=${{ steps.version.outputs.version }},enable=${{ steps.version.outputs.version != '' }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./apps/${{ matrix.app }}
           file: ./apps/${{ matrix.app }}/Dockerfile
-          push: true
+          push: false
+          load: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
+          build-args: |
+            PAPERLESS_VERSION=${{ steps.version.outputs.version }}
+          provenance: false
+          sbom: false
+          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=Built with retry strategy
+
+      - name: Push Docker image with retry
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          retry_wait_seconds: 30
+          command: |
+            # Re-build and push (this will use cache from previous step)
+            docker buildx build \
+              --platform linux/amd64,linux/arm64 \
+              --build-arg PAPERLESS_VERSION=${{ steps.version.outputs.version }} \
+              --cache-from type=gha \
+              --push \
+              --provenance=false \
+              --sbom=false \
+              $(echo "${{ steps.meta.outputs.tags }}" | sed 's/^/-t /' | tr '\n' ' ') \
+              $(echo "${{ steps.meta.outputs.labels }}" | sed 's/^/--label /' | tr '\n' ' ') \
+              ./apps/${{ matrix.app }}
 
       - name: Output image URL
         run: |
