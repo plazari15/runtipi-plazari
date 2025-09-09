@@ -1,0 +1,53 @@
+{
+  "$schema": "../app-info-schema.json",
+  "name": "Blinko",
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "port": 1111,
+  "id": "blinko",
+  "tipi_version": 76,
+  "version": "latest",
+  "categories": ["productivity", "utilities"],
+  "description": "Blinko is a self-hosted note-taking and knowledge management application that helps you capture, organize, and retrieve your thoughts and ideas efficiently.",
+  "short_desc": "Self-hosted note-taking and knowledge management",
+  "author": "blinkospace",
+  "source": "https://github.com/blinkospace/blinko",
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "NextAuth Secret",
+      "required": true,
+      "min": 32,
+      "max": 128,
+      "hint": "A secure secret key for NextAuth authentication. Must be at least 32 characters long.",
+      "env_variable": "NEXTAUTH_SECRET"
+    },
+    {
+      "type": "password",
+      "label": "Database Password",
+      "required": true,
+      "min": 8,
+      "max": 64,
+      "hint": "Password for the PostgreSQL database",
+      "env_variable": "POSTGRES_PASSWORD"
+    },
+    {
+      "type": "text",
+      "label": "NextAuth URL",
+      "required": false,
+      "hint": "Set this if you want to use SSO or have a custom domain (e.g., https://your-domain.com)",
+      "env_variable": "NEXTAUTH_URL"
+    },
+    {
+      "type": "text",
+      "label": "Base URL",
+      "required": false,
+      "hint": "Public base URL for the application (e.g., https://your-domain.com)",
+      "env_variable": "NEXT_PUBLIC_BASE_URL"
+    }
+  ],
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1736424603696,
+  "updated_at": 1736424603696
+}
