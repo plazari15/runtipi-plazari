@@ -8,7 +8,7 @@
   "id": "blinko",
   "tipi_version": 76,
   "version": "latest",
-  "categories": ["productivity", "utilities"],
+  "categories": ["ai", "utilities"],
   "description": "Blinko is a self-hosted note-taking and knowledge management application that helps you capture, organize, and retrieve your thoughts and ideas efficiently.",
   "short_desc": "Self-hosted note-taking and knowledge management",
   "author": "blinkospace",
