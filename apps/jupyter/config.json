@@ -52,6 +52,10 @@
         {
           "label": "PySpark Notebook (big data)",
           "value": "jupyter/pyspark-notebook:latest"
+        },
+        {
+          "label": "All-Spark Notebook (everything included)",
+          "value": "jupyter/all-spark-notebook:latest"
         }
       ],
       "env_variable": "JUPYTER_IMAGE"
@@ -72,6 +76,55 @@
         }
       ],
       "env_variable": "JUPYTER_INTERFACE"
+    },
+    {
+      "type": "text",
+      "label": "Interface Language",
+      "hint": "Choose the language for the Jupyter interface",
+      "required": true,
+      "options": [
+        {
+          "label": "English",
+          "value": "en"
+        },
+        {
+          "label": "Português (Brasil)",
+          "value": "pt_BR"
+        },
+        {
+          "label": "Español",
+          "value": "es"
+        },
+        {
+          "label": "Français",
+          "value": "fr"
+        },
+        {
+          "label": "Deutsch",
+          "value": "de"
+        },
+        {
+          "label": "中文 (简体)",
+          "value": "zh_CN"
+        },
+        {
+          "label": "日本語",
+          "value": "ja"
+        },
+        {
+          "label": "한국어",
+          "value": "ko"
+        },
+        {
+          "label": "Русский",
+          "value": "ru"
+        },
+        {
+          "label": "Italiano",
+          "value": "it"
+        }
+      ],
+      "env_variable": "JUPYTER_LANG"
     }
   ],
   "supported_architectures": ["arm64", "amd64"],

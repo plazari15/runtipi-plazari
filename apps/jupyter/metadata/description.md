@@ -6,6 +6,7 @@ Jupyter is an open-source web application that allows you to create and share do
 
 - **Interactive Computing**: Create and share documents with live code, equations, visualizations and narrative text
 - **Multiple Languages**: Supports over 40 programming languages including Python, R, Julia, and Scala
+- **Interface Localization**: Available in 10 languages including Portuguese (Brazil), Spanish, French, German, Chinese, Japanese, Korean, Russian, and Italian
 - **Data Visualization**: Rich output including HTML, images, videos, LaTeX, and JavaScript
 - **Big Data Integration**: Leverage big data tools like Apache Spark from Python, R and Scala
 - **Flexible Interface**: Choose between classic Notebook interface or modern JupyterLab
@@ -30,12 +31,14 @@ This app supports multiple Jupyter Docker images:
 - **DataScience Notebook**: SciPy + R, Julia, and Scala kernels
 - **TensorFlow Notebook**: SciPy + TensorFlow and Keras for machine learning
 - **PySpark Notebook**: SciPy + Apache Spark for big data processing
+- **All-Spark Notebook**: Everything included - the most comprehensive option with all tools and libraries
 
 ## Getting Started
 
 1. Choose your preferred Jupyter image variant
 2. Set a secure token for authentication
 3. Select between JupyterLab (modern) or Classic Notebook interface
-4. Access your Jupyter environment through the web interface
+4. Choose your preferred interface language (including Português Brasil)
+5. Access your Jupyter environment through the web interface
 
 Your notebooks and work files will be persisted in the app data directory, so they'll survive container restarts and updates.

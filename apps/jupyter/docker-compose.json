@@ -10,7 +10,9 @@
         "JUPYTER_TOKEN": "${JUPYTER_TOKEN}",
         "GRANT_SUDO": "yes",
         "CHOWN_HOME": "yes",
-        "CHOWN_HOME_OPTS": "-R"
+        "CHOWN_HOME_OPTS": "-R",
+        "LANG": "${JUPYTER_LANG}.UTF-8",
+        "LC_ALL": "${JUPYTER_LANG}.UTF-8"
       },
       "volumes": [
         {
@@ -22,7 +24,11 @@
           "containerPath": "/home/jovyan/notebooks"
         }
       ],
-      "user": "root"
+      "user": "root",
+      "command": [
+        "bash", "-c",
+        "apt-get update && apt-get install -y locales && locale-gen ${JUPYTER_LANG}.UTF-8 && pip install jupyterlab-language-pack-pt-BR jupyterlab-language-pack-es-ES jupyterlab-language-pack-fr-FR jupyterlab-language-pack-de-DE jupyterlab-language-pack-zh-CN jupyterlab-language-pack-ja-JP jupyterlab-language-pack-ko-KR jupyterlab-language-pack-ru-RU jupyterlab-language-pack-it-IT 2>/dev/null || true && start-notebook.sh --NotebookApp.token='${JUPYTER_TOKEN}' --NotebookApp.password='' --NotebookApp.allow_root=True"
+      ]
     }
   ],
   "$schema": "../dynamic-compose-schema.json"
