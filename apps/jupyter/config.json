@@ -1,0 +1,80 @@
+{
+  "$schema": "../app-info-schema.json",
+  "name": "Jupyter",
+  "available": true,
+  "exposable": true,
+  "dynamic_config": true,
+  "port": 8888,
+  "id": "jupyter",
+  "tipi_version": 76,
+  "version": "latest",
+  "categories": ["development", "data-science"],
+  "description": "Jupyter is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.",
+  "short_desc": "Interactive development environment for data science and machine learning",
+  "author": "Project Jupyter",
+  "source": "https://github.com/jupyter/docker-stacks",
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "Jupyter Token",
+      "required": true,
+      "min": 16,
+      "max": 128,
+      "hint": "A secure token for accessing Jupyter. This will be used as your password.",
+      "env_variable": "JUPYTER_TOKEN"
+    },
+    {
+      "type": "text",
+      "label": "Jupyter Image",
+      "required": true,
+      "hint": "Choose the Jupyter image variant that suits your needs",
+      "options": [
+        {
+          "label": "Base Notebook (minimal)",
+          "value": "jupyter/base-notebook:latest"
+        },
+        {
+          "label": "Minimal Notebook (Python 3)",
+          "value": "jupyter/minimal-notebook:latest"
+        },
+        {
+          "label": "SciPy Notebook (scientific libraries)",
+          "value": "jupyter/scipy-notebook:latest"
+        },
+        {
+          "label": "DataScience Notebook (R, Julia, Scala)",
+          "value": "jupyter/datascience-notebook:latest"
+        },
+        {
+          "label": "TensorFlow Notebook (machine learning)",
+          "value": "jupyter/tensorflow-notebook:latest"
+        },
+        {
+          "label": "PySpark Notebook (big data)",
+          "value": "jupyter/pyspark-notebook:latest"
+        }
+      ],
+      "env_variable": "JUPYTER_IMAGE"
+    },
+    {
+      "type": "text",
+      "label": "Enable JupyterLab",
+      "hint": "Choose between classic Jupyter Notebook interface or modern JupyterLab interface",
+      "required": true,
+      "options": [
+        {
+          "label": "JupyterLab (modern interface)",
+          "value": "lab"
+        },
+        {
+          "label": "Classic Notebook",
+          "value": "notebook"
+        }
+      ],
+      "env_variable": "JUPYTER_INTERFACE"
+    }
+  ],
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1726315200000,
+  "updated_at": 1726315200000
+}

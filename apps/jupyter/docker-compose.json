@@ -1,0 +1,29 @@
+{
+  "services": [
+    {
+      "name": "jupyter",
+      "image": "${JUPYTER_IMAGE}",
+      "isMain": true,
+      "internalPort": 8888,
+      "environment": {
+        "JUPYTER_ENABLE_LAB": "${JUPYTER_INTERFACE}",
+        "JUPYTER_TOKEN": "${JUPYTER_TOKEN}",
+        "GRANT_SUDO": "yes",
+        "CHOWN_HOME": "yes",
+        "CHOWN_HOME_OPTS": "-R"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/work",
+          "containerPath": "/home/jovyan/work"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/notebooks",
+          "containerPath": "/home/jovyan/notebooks"
+        }
+      ],
+      "user": "root"
+    }
+  ],
+  "$schema": "../dynamic-compose-schema.json"
+}
