@@ -7,6 +7,7 @@ Jupyter is an open-source web application that allows you to create and share do
 - **Interactive Computing**: Create and share documents with live code, equations, visualizations and narrative text
 - **Multiple Languages**: Supports over 40 programming languages including Python, R, Julia, and Scala
 - **Interface Localization**: Available in 10 languages including Portuguese (Brazil), Spanish, French, German, Chinese, Japanese, Korean, Russian, and Italian
+- **Flexible Authentication**: Choose between secure token authentication or open access (no login required)
 - **Data Visualization**: Rich output including HTML, images, videos, LaTeX, and JavaScript
 - **Big Data Integration**: Leverage big data tools like Apache Spark from Python, R and Scala
 - **Flexible Interface**: Choose between classic Notebook interface or modern JupyterLab
@@ -36,9 +37,15 @@ This app supports multiple Jupyter Docker images:
 ## Getting Started
 
 1. Choose your preferred Jupyter image variant
-2. Set a secure token for authentication
-3. Select between JupyterLab (modern) or Classic Notebook interface
-4. Choose your preferred interface language (including Português Brasil)
-5. Access your Jupyter environment through the web interface
+2. Select authentication mode (secure token or open access)
+3. Set a secure token if using token authentication (optional for open access)
+4. Select between JupyterLab (modern) or Classic Notebook interface
+5. Choose your preferred interface language (including Português Brasil)
+6. Access your Jupyter environment through the web interface
+
+## Authentication Options
+
+- **Token Authentication (Recommended)**: Requires a secure token to access Jupyter. Best for production or shared environments.
+- **No Authentication (Open Access)**: No login required. Suitable for local development or trusted private networks only.
 
 Your notebooks and work files will be persisted in the app data directory, so they'll survive container restarts and updates.

@@ -15,12 +15,29 @@
   "source": "https://github.com/jupyter/docker-stacks",
   "form_fields": [
     {
+      "type": "text",
+      "label": "Authentication Mode",
+      "hint": "Choose whether to require authentication or allow open access",
+      "required": true,
+      "options": [
+        {
+          "label": "Token Authentication (Secure)",
+          "value": "token"
+        },
+        {
+          "label": "No Authentication (Open Access)",
+          "value": "none"
+        }
+      ],
+      "env_variable": "JUPYTER_AUTH_MODE"
+    },
+    {
       "type": "password",
       "label": "Jupyter Token",
-      "required": true,
+      "required": false,
       "min": 16,
       "max": 128,
-      "hint": "A secure token for accessing Jupyter. This will be used as your password.",
+      "hint": "A secure token for accessing Jupyter. Only required if Token Authentication is selected.",
       "env_variable": "JUPYTER_TOKEN"
     },
     {

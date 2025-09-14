@@ -27,7 +27,7 @@
       "user": "root",
       "command": [
         "bash", "-c",
-        "apt-get update && apt-get install -y locales && locale-gen ${JUPYTER_LANG}.UTF-8 && pip install jupyterlab-language-pack-pt-BR jupyterlab-language-pack-es-ES jupyterlab-language-pack-fr-FR jupyterlab-language-pack-de-DE jupyterlab-language-pack-zh-CN jupyterlab-language-pack-ja-JP jupyterlab-language-pack-ko-KR jupyterlab-language-pack-ru-RU jupyterlab-language-pack-it-IT 2>/dev/null || true && start-notebook.sh --NotebookApp.token='${JUPYTER_TOKEN}' --NotebookApp.password='' --NotebookApp.allow_root=True"
+        "apt-get update && apt-get install -y locales && locale-gen ${JUPYTER_LANG}.UTF-8 && pip install jupyterlab-language-pack-pt-BR jupyterlab-language-pack-es-ES jupyterlab-language-pack-fr-FR jupyterlab-language-pack-de-DE jupyterlab-language-pack-zh-CN jupyterlab-language-pack-ja-JP jupyterlab-language-pack-ko-KR jupyterlab-language-pack-ru-RU jupyterlab-language-pack-it-IT 2>/dev/null || true && if [ \"${JUPYTER_AUTH_MODE}\" = \"none\" ]; then start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_root=True; else start-notebook.sh --NotebookApp.token='${JUPYTER_TOKEN}' --NotebookApp.password='' --NotebookApp.allow_root=True; fi"
       ]
     }
   ],
