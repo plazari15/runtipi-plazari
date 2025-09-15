@@ -7,7 +7,7 @@
   "port": 8888,
   "id": "jupyter",
   "tipi_version": 76,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "categories": ["development", "data"],
   "description": "Jupyter is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.",
   "short_desc": "Interactive development environment for data science and machine learning",

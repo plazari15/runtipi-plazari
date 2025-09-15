@@ -8,6 +8,7 @@ Jupyter is an open-source web application that allows you to create and share do
 - **Multiple Languages**: Supports over 40 programming languages including Python, R, Julia, and Scala
 - **Interface Localization**: Available in 10 languages including Portuguese (Brazil), Spanish, French, German, Chinese, Japanese, Korean, Russian, and Italian
 - **Flexible Authentication**: Choose between secure token authentication or open access (no login required)
+- **System Package Installation**: Full sudo access for installing system packages directly from notebook cells
 - **Data Visualization**: Rich output including HTML, images, videos, LaTeX, and JavaScript
 - **Big Data Integration**: Leverage big data tools like Apache Spark from Python, R and Scala
 - **Flexible Interface**: Choose between classic Notebook interface or modern JupyterLab
@@ -47,5 +48,20 @@ This app supports multiple Jupyter Docker images:
 
 - **Token Authentication (Recommended)**: Requires a secure token to access Jupyter. Best for production or shared environments.
 - **No Authentication (Open Access)**: No login required. Suitable for local development or trusted private networks only.
+
+## System Package Installation
+
+You can install system packages directly from notebook cells using sudo commands:
+
+```python
+# Install system packages
+!sudo apt-get update -qq
+!sudo apt-get install -y package-name
+
+# Example: Installing Java and Spark
+!sudo apt-get install openjdk-8-jdk-headless -qq > /dev/null
+!wget -q https://archive.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
+!tar xf spark-2.4.4-bin-hadoop2.7.tgz
+```
 
 Your notebooks and work files will be persisted in the app data directory, so they'll survive container restarts and updates.
