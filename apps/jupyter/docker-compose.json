@@ -1,4 +1,6 @@
 {
+  "$schema": "https://schemas.runtipi.io/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "jupyter",
@@ -30,6 +32,5 @@
         "set -e && export DEBIAN_FRONTEND=noninteractive && apt-get update -qq && apt-get install -y -qq locales sudo && locale-gen ${JUPYTER_LANG}.UTF-8 2>/dev/null || locale-gen en_US.UTF-8 && pip install --quiet --no-cache-dir jupyterlab-language-pack-pt-BR jupyterlab-language-pack-es-ES jupyterlab-language-pack-fr-FR jupyterlab-language-pack-de-DE jupyterlab-language-pack-zh-CN jupyterlab-language-pack-ja-JP jupyterlab-language-pack-ko-KR jupyterlab-language-pack-ru-RU jupyterlab-language-pack-it-IT 2>/dev/null || echo 'Language packs installation completed with some warnings' && echo 'jovyan ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && chown -R jovyan:users /home/jovyan && if [ \"${JUPYTER_AUTH_MODE}\" = \"none\" ]; then start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_root=True --NotebookApp.ip='0.0.0.0'; else start-notebook.sh --NotebookApp.token='${JUPYTER_TOKEN}' --NotebookApp.password='' --NotebookApp.allow_root=True --NotebookApp.ip='0.0.0.0'; fi"
       ]
     }
-  ],
-  "$schema": "../dynamic-compose-schema.json"
+  ]
 }
