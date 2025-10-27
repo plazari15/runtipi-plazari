@@ -1,4 +1,4 @@
-ARG PAPERLESS_VERSION=2.18.4
+ARG PAPERLESS_VERSION=2.19.2
 FROM ghcr.io/paperless-ngx/paperless-ngx:${PAPERLESS_VERSION}
 
 USER root
