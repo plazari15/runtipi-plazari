@@ -1,4 +1,6 @@
 {
+    "$schema": "https://schemas.runtipi.io/dynamic-compose.json",
+    "schemaVersion": 2,
     "services": [
       {
         "name": "paperless-ngx",
@@ -71,6 +73,5 @@
         "name": "tika",
         "image": "ghcr.io/paperless-ngx/tika:latest"
       }
-    ],
-    "$schema": "../dynamic-compose-schema.json"
+    ]
   }
