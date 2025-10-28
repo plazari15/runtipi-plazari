@@ -7,13 +7,28 @@
       "image": "blinkospace/blinko:1.4.0",
       "isMain": true,
       "internalPort": 1111,
-      "environment": {
-        "NODE_ENV": "production",
-        "NEXTAUTH_SECRET": "${NEXTAUTH_SECRET}",
-        "DATABASE_URL": "postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres",
-        "NEXTAUTH_URL": "${NEXTAUTH_URL}",
-        "NEXT_PUBLIC_BASE_URL": "${NEXT_PUBLIC_BASE_URL}"
-      },
+      "environment": [
+        {
+          "key": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "key": "NEXTAUTH_SECRET",
+          "value": "${NEXTAUTH_SECRET}"
+        },
+        {
+          "key": "DATABASE_URL",
+          "value": "postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres"
+        },
+        {
+          "key": "NEXTAUTH_URL",
+          "value": "${NEXTAUTH_URL}"
+        },
+        {
+          "key": "NEXT_PUBLIC_BASE_URL",
+          "value": "${NEXT_PUBLIC_BASE_URL}"
+        }
+      ],
       "dependsOn": ["postgres"],
       "volumes": [
         {
@@ -25,12 +40,24 @@
     {
       "name": "postgres",
       "image": "postgres:14",
-      "environment": {
-        "POSTGRES_DB": "postgres",
-        "POSTGRES_USER": "postgres",
-        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}",
-        "TZ": "America/Sao_Paulo"
-      },
+      "environment": [
+        {
+          "key": "POSTGRES_DB",
+          "value": "postgres"
+        },
+        {
+          "key": "POSTGRES_USER",
+          "value": "postgres"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "${POSTGRES_PASSWORD}"
+        },
+        {
+          "key": "TZ",
+          "value": "America/Sao_Paulo"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/postgres",
