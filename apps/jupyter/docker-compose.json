@@ -7,15 +7,36 @@
       "image": "${JUPYTER_IMAGE}",
       "isMain": true,
       "internalPort": 8888,
-      "environment": {
-        "JUPYTER_ENABLE_LAB": "${JUPYTER_INTERFACE}",
-        "JUPYTER_TOKEN": "${JUPYTER_TOKEN}",
-        "GRANT_SUDO": "yes",
-        "CHOWN_HOME": "yes",
-        "CHOWN_HOME_OPTS": "-R",
-        "LANG": "${JUPYTER_LANG}.UTF-8",
-        "LC_ALL": "${JUPYTER_LANG}.UTF-8"
-      },
+      "environment": [
+        {
+          "key": "JUPYTER_ENABLE_LAB",
+          "value": "${JUPYTER_INTERFACE}"
+        },
+        {
+          "key": "JUPYTER_TOKEN",
+          "value": "${JUPYTER_TOKEN}"
+        },
+        {
+          "key": "GRANT_SUDO",
+          "value": "yes"
+        },
+        {
+          "key": "CHOWN_HOME",
+          "value": "yes"
+        },
+        {
+          "key": "CHOWN_HOME_OPTS",
+          "value": "-R"
+        },
+        {
+          "key": "LANG",
+          "value": "${JUPYTER_LANG}.UTF-8"
+        },
+        {
+          "key": "LC_ALL",
+          "value": "${JUPYTER_LANG}.UTF-8"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/work",
