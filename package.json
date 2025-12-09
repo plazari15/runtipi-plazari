@@ -28,7 +28,7 @@
     "js-yaml": "^4.1.0",
     "lefthook": "^2.0.9",
     "semver": "^7.7.2",
-    "ts-jest": "^28.0.7",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.8.3",
     "zod": "^4.1.13",
     "zod-validation-error": "^5.0.0"
