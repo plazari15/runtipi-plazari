@@ -16,7 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "^2.1.1",
-    "@commitlint/cli": "^19.8.1",
+    "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^19.8.1",
     "@commitlint/cz-commitlint": "^19.8.1",
     "@types/jest": "^28.1.6",
