@@ -29,12 +29,13 @@
     "lefthook": "^1.12.2",
     "semver": "^7.7.2",
     "ts-jest": "^28.0.7",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "zod-validation-error": "^5.0.0"
   },
   "dependencies": {
     "@runtipi/common": "^1.0.1",
-    "bun": "^1.2.10",
-    "ajv": "^8.17.1"
+    "ajv": "^8.17.1",
+    "bun": "^1.2.10"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
