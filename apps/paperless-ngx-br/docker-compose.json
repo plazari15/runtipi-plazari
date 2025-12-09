@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "name": "paperless-ngx",
+      "name": "paperless-ngx-br",
       "image": "ghcr.io/plazari15/paperless-ngx-br",
       "isMain": true,
       "internalPort": 8000,
@@ -117,7 +117,7 @@
     },
     {
       "name": "tika",
-      "image": "ghcr.io/paperless-ngx/tika:latest"
+      "image": "apache/tika:latest"
     }
   ]
 }
